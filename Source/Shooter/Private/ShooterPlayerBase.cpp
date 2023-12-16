@@ -3,14 +3,18 @@
 
 #include "Shooter/Public/ShooterPlayerBase.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 AShooterPlayerBase::AShooterPlayerBase()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>("SpringArmComponent");
+	SpringArmComponent->SetupAttachment(GetRootComponent());
+	SpringArmComponent->bUsePawnControlRotation = true;
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>("Camera");
-	CameraComponent->SetupAttachment(GetRootComponent());
+	CameraComponent->SetupAttachment(SpringArmComponent);
 }
 
 // Called when the game starts or when spawned
@@ -33,6 +37,10 @@ void AShooterPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveForward", this, &AShooterPlayerBase::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AShooterPlayerBase::MoveRight);
+	PlayerInputComponent->BindAxis("TurnTop",  this,  &AShooterPlayerBase::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("TurnAround", this, &AShooterPlayerBase::AddControllerYawInput);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AShooterPlayerBase::Jump);
+	
 }
 
 void AShooterPlayerBase::MoveForward(float Amount)
@@ -45,3 +53,13 @@ void AShooterPlayerBase::MoveRight(float Amount)
 	AddMovementInput(GetActorRightVector(), Amount);
 }
 
+/*
+	void AShooterPlayerBase::TurnTop(float Amount)
+{
+	AddControllerPitchInput(Amount);
+}
+void AShooterPlayerBase::TurnAround(float Amount)
+{
+	AddControllerYawInput(Amount);
+}
+*/

@@ -17,6 +17,8 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UCameraComponent* CameraComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class USpringArmComponent* SpringArmComponent;
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,4 +34,9 @@ public:
 private:
 	void MoveForward(float Amount);
 	void MoveRight(float Amount);
+	
+	/*
+	void TurnTop(float Amount);
+	void TurnAround(float Amount);
+	*/
 };
