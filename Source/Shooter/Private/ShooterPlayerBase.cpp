@@ -28,7 +28,6 @@ void AShooterPlayerBase::BeginPlay()
 void AShooterPlayerBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -40,17 +39,38 @@ void AShooterPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	PlayerInputComponent->BindAxis("TurnTop",  this,  &AShooterPlayerBase::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("TurnAround", this, &AShooterPlayerBase::AddControllerYawInput);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AShooterPlayerBase::Jump);
-	
+	//ускорение бинд функцый
+	PlayerInputComponent->BindAction("Run" , IE_Pressed, this, &AShooterPlayerBase::StarRunning);
+	PlayerInputComponent->BindAction("Run" , IE_Released, this, &AShooterPlayerBase::StopRunning);
+}
+
+bool AShooterPlayerBase::IsRunning()
+{
+	return (WantRunning && IsMoveForward && !GetVelocity().IsZero());
 }
 
 void AShooterPlayerBase::MoveForward(float Amount)
 {
 	AddMovementInput(GetActorForwardVector(), Amount);
+
+	IsMoveForward = Amount > 0.05;
 }
 
 void AShooterPlayerBase::MoveRight(float Amount)
 {
 	AddMovementInput(GetActorRightVector(), Amount);
+}
+
+
+//ускорение функцый
+void AShooterPlayerBase::StarRunning()
+{
+	WantRunning = true;
+}
+
+void AShooterPlayerBase::StopRunning()
+{
+	WantRunning = false;
 }
 
 /*
