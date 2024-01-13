@@ -13,7 +13,7 @@ class SHOOTER_API AShooterPlayerBase : public ACharacter
 
 public:
 	// Sets default values for this character's properties
-	AShooterPlayerBase();
+	AShooterPlayerBase(const FObjectInitializer& ObjectInit);
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UCameraComponent* CameraComponent;

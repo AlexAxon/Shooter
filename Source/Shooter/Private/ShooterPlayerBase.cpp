@@ -1,12 +1,12 @@
 // Shooter game. All rights reserved!
 
-
+#include "ShooterCharacterMovementCom.h"
 #include "Shooter/Public/ShooterPlayerBase.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
-AShooterPlayerBase::AShooterPlayerBase()
+AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : Super(ObjectInit.SetDefaultSubobjectClass<UShooterCharacterMovementCom>(ACharacter::CharacterMovementComponentName))
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
