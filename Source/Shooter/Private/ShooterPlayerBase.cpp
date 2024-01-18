@@ -1,7 +1,7 @@
 // Shooter game. All rights reserved!
 
-#include "ShooterCharacterMovementCom.h"
 #include "Shooter/Public/ShooterPlayerBase.h"
+#include "ShooterCharacterMovementCom.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -47,6 +47,16 @@ void AShooterPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 bool AShooterPlayerBase::IsRunning()
 {
 	return (WantRunning && IsMoveForward && !GetVelocity().IsZero());
+}
+
+float AShooterPlayerBase::GetMovementDirection()
+{
+	if(GetVelocity().IsZero()) return 0.0f;
+	auto VelocityNormal = GetVelocity().GetSafeNormal();
+	auto Angel = FMath::Acos(FVector::DotProduct(GetActorForwardVector(),VelocityNormal));
+	auto CrossProduct = FVector::CrossProduct(VelocityNormal,GetActorForwardVector());
+	auto Degrees = FMath::RadiansToDegrees(Angel);
+	return CrossProduct.IsZero() ? Degrees : Degrees * FMath::Sign(CrossProduct.Z);
 }
 
 void AShooterPlayerBase::MoveForward(float Amount)

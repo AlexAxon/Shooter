@@ -33,6 +33,8 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	bool IsRunning();
+	UFUNCTION(BlueprintCallable)
+	float GetMovementDirection();
 
 
 private:
