@@ -1,7 +1,8 @@
 // Shooter game. All rights reserved!
 
-#include "ShooterPlayerBase.h"
 #include "ShooterCharacterMovementCom.h"
+#include "ShooterPlayerBase.h"
+
 
 float UShooterCharacterMovementCom::GetMaxSpeed() const
 {

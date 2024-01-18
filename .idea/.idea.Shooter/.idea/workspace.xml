@@ -12,10 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="07c2e7ce-dcef-45d2-932a-b8937e9bac44" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Project/Animations/ABP_ShooterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Animations/ABP_ShooterPlayer.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/ShooterCharacterMovementCom.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/ShooterCharacterMovementCom.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,36 +26,36 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2auKnuCSq0xY6NKOT8eB2a8VbnE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Shooter.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Shooter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\zerli\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\zerli\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\zerli\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\zerli\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\zerli\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\zerli\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.Shooter">
     <configuration name="Shooter" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -180,7 +178,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705163203330</updated>
-      <workItem from="1705163212457" duration="3556000" />
+      <workItem from="1705163212457" duration="4486000" />
+      <workItem from="1705188738862" duration="164000" />
     </task>
     <servers />
   </component>
