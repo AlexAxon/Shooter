@@ -11,10 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07c2e7ce-dcef-45d2-932a-b8937e9bac44" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Project/Animations/BS_LocomotionDirection.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Project/Animations/ABP_ShooterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Animations/ABP_ShooterPlayer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Project/Blueprints/Player/BP_ShooterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Blueprints/Player/BP_ShooterPlayer.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" afterDir="false" />
@@ -185,6 +183,7 @@
       <workItem from="1705163212457" duration="4486000" />
       <workItem from="1705188738862" duration="164000" />
       <workItem from="1705593848671" duration="3237000" />
+      <workItem from="1705764292084" duration="3451000" />
     </task>
     <servers />
   </component>

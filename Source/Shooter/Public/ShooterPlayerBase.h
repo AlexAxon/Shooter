@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "ShooterPlayerBase.generated.h"
 
+class UShooterHealthComponent;
+class UTextRenderComponent;
+
 UCLASS()
 class SHOOTER_API AShooterPlayerBase : public ACharacter
 {
@@ -17,8 +20,18 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UCameraComponent* CameraComponent;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class USpringArmComponent* SpringArmComponent;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UShooterHealthComponent* HealthComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UTextRenderComponent* TextRenderComponent;
+
+	
+	
 
 protected:
 	// Called when the game starts or when spawned

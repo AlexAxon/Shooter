@@ -1,9 +1,11 @@
 // Shooter game. All rights reserved!
 
 #include "Shooter/Public/ShooterPlayerBase.h"
+#include "ShooterHealthComponent.h"
 #include "ShooterCharacterMovementCom.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Components/TextRenderComponent.h"
 
 // Sets default values
 AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : Super(ObjectInit.SetDefaultSubobjectClass<UShooterCharacterMovementCom>(ACharacter::CharacterMovementComponentName))
@@ -15,6 +17,9 @@ AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : S
 	SpringArmComponent->bUsePawnControlRotation = true;
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>("Camera");
 	CameraComponent->SetupAttachment(SpringArmComponent);
+	HealthComponent = CreateDefaultSubobject<UShooterHealthComponent>("ShooterHealthComponent");
+	TextRenderComponent = CreateDefaultSubobject<UTextRenderComponent>("TextRenderComponent");
+	TextRenderComponent->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -28,6 +33,9 @@ void AShooterPlayerBase::BeginPlay()
 void AShooterPlayerBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	float Health = HealthComponent->GetHealth();
+	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),Health)));
+	
 }
 
 // Called to bind functionality to input
