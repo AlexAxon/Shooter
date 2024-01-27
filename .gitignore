@@ -12,3 +12,7 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+
+# Rider generated files
+.idea/
+Plugins/Developer/RiderLink/
