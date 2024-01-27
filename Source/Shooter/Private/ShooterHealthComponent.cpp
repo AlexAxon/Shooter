@@ -13,12 +13,20 @@ UShooterHealthComponent::UShooterHealthComponent()
 	// ...
 }
 
+void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
+	AController* InstigatedBy, AActor* DamageCauser)
+{
+	Health = Health - Damage;
+}
+
 
 // Called when the game starts
 void UShooterHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	Health = MaxHealth;
+	AActor*  Player = GetOwner();
 	// ...
+	Player->OnTakeAnyDamage.AddDynamic(this, &UShooterHealthComponent::TakeAnyDamage);
 	
 }

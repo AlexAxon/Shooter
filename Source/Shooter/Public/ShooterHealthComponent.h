@@ -16,6 +16,8 @@ public:
 	// Sets default values for this component's properties
 	UShooterHealthComponent();
 	float GetHealth() const { return Health; };
+	UFUNCTION(BlueprintCallable)
+	void TakeAnyDamage( AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 	
 private:
 	float Health = 0.0f;

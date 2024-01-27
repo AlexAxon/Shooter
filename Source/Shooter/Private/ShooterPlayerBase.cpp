@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/TextRenderComponent.h"
+#include "Engine/DamageEvents.h"
 
 // Sets default values
 AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : Super(ObjectInit.SetDefaultSubobjectClass<UShooterCharacterMovementCom>(ACharacter::CharacterMovementComponentName))
@@ -35,7 +36,8 @@ void AShooterPlayerBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	float Health = HealthComponent->GetHealth();
 	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),Health)));
-	
+
+	TakeDamage(0.1,FDamageEvent{},Controller,this);
 }
 
 // Called to bind functionality to input
