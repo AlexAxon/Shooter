@@ -2,7 +2,10 @@
 
 
 #include "ShooterHealthComponent.h"
+#include "Dev/IceDamageType.h"
+#include "Dev/FireDamageType.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogHealth,All,All)
 // Sets default values for this component's properties
 UShooterHealthComponent::UShooterHealthComponent()
 {
@@ -16,7 +19,19 @@ UShooterHealthComponent::UShooterHealthComponent()
 void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
 	AController* InstigatedBy, AActor* DamageCauser)
 {
+	
 	Health = Health - Damage;
+	if (DamageType)
+	{
+		if (DamageType->IsA<UIceDamageType>())
+		{
+		UE_LOG(LogHealth,Display, TEXT("COLD!"));
+		}
+		else if (DamageType->IsA<UFireDamageType>())
+		{
+		UE_LOG(LogHealth,Display, TEXT("HOT!"));
+		}
+	}
 }
 
 

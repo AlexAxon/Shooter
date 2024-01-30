@@ -21,7 +21,6 @@ public:
 	
 private:
 	float Health = 0.0f;
-	
 
 protected:
 	// Called when the game starts
