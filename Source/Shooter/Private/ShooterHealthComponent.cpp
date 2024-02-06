@@ -19,20 +19,22 @@ UShooterHealthComponent::UShooterHealthComponent()
 void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
 	AController* InstigatedBy, AActor* DamageCauser)
 {
-	
-	Health = Health - Damage;
+	if (IsDead() || Damage <= 0) return;
+	Health = FMath::Clamp(Health - Damage,0,MaxHealth);
+	if (IsDead()) OnDeath.Broadcast();
 	if (DamageType)
 	{
 		if (DamageType->IsA<UIceDamageType>())
 		{
-		UE_LOG(LogHealth,Display, TEXT("COLD!"));
+			UE_LOG(LogHealth,Display, TEXT("COLD!"));
 		}
 		else if (DamageType->IsA<UFireDamageType>())
 		{
-		UE_LOG(LogHealth,Display, TEXT("HOT!"));
+			UE_LOG(LogHealth,Display, TEXT("HOT!"));
 		}
 	}
 }
+
 
 
 // Called when the game starts

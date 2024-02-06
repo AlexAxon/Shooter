@@ -8,6 +8,8 @@
 #include "Components/TextRenderComponent.h"
 #include "Engine/DamageEvents.h"
 
+
+DEFINE_LOG_CATEGORY_STATIC(LogHealth,All,All)
 // Sets default values
 AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : Super(ObjectInit.SetDefaultSubobjectClass<UShooterCharacterMovementCom>(ACharacter::CharacterMovementComponentName))
 {
@@ -27,7 +29,7 @@ AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : S
 void AShooterPlayerBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	HealthComponent->OnDeath.AddUObject(this,&AShooterPlayerBase::OnDeath);
 }
 
 // Called every frame
@@ -91,6 +93,14 @@ void AShooterPlayerBase::StarRunning()
 void AShooterPlayerBase::StopRunning()
 {
 	WantRunning = false;
+}
+
+void AShooterPlayerBase::OnDeath()
+{
+	PlayAnimMontage(DeathAnimMontage);
+	GetCharacterMovement()->DisableMovement();
+	SetLifeSpan(5);
+	UE_LOG(LogHealth,Display, TEXT("Player IS Dead!"));
 }
 
 /*

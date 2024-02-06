@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "ShooterHealthComponent.generated.h"
 
-
+DECLARE_MULTICAST_DELEGATE(FOnDeath)
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SHOOTER_API UShooterHealthComponent : public UActorComponent
 {
@@ -18,6 +18,10 @@ public:
 	float GetHealth() const { return Health; };
 	UFUNCTION(BlueprintCallable)
 	void TakeAnyDamage( AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
+
+	UFUNCTION(BlueprintCallable)
+	bool IsDead(){return Health <= 0;}
+	FOnDeath OnDeath;
 	
 private:
 	float Health = 0.0f;

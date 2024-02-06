@@ -36,7 +36,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UAnimMontage* DeathAnimMontage;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -48,6 +49,7 @@ public:
 	bool IsRunning();
 	UFUNCTION(BlueprintCallable)
 	float GetMovementDirection();
+	
 
 
 private:
@@ -57,6 +59,7 @@ private:
 	void StopRunning();
 	bool WantRunning = false;
 	bool IsMoveForward = false;
+	void OnDeath();
 	
 	/*
 	void TurnTop(float Amount);
