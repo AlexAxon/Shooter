@@ -21,6 +21,7 @@ void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, 
 {
 	if (IsDead() || Damage <= 0) return;
 	Health = FMath::Clamp(Health - Damage,0,MaxHealth);
+	OnHealthChange.Broadcast(Health);
 	if (IsDead()) OnDeath.Broadcast();
 	if (DamageType)
 	{
@@ -42,8 +43,10 @@ void UShooterHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	Health = MaxHealth;
+	OnHealthChange.Broadcast(Health);
 	AActor*  Player = GetOwner();
 	// ...
 	Player->OnTakeAnyDamage.AddDynamic(this, &UShooterHealthComponent::TakeAnyDamage);
+	
 	
 }

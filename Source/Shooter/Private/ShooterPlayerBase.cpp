@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/TextRenderComponent.h"
+#include "GameFramework/Controller.h"
 #include "Engine/DamageEvents.h"
 
 
@@ -29,17 +30,15 @@ AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : S
 void AShooterPlayerBase::BeginPlay()
 {
 	Super::BeginPlay();
+	OnHealthChange(HealthComponent->GetHealth());
 	HealthComponent->OnDeath.AddUObject(this,&AShooterPlayerBase::OnDeath);
+	HealthComponent->OnHealthChange.AddUObject(this,&AShooterPlayerBase::OnHealthChange);
 }
 
 // Called every frame
 void AShooterPlayerBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	float Health = HealthComponent->GetHealth();
-	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),Health)));
-
-	//TakeDamage(0.1,FDamageEvent{},Controller,this);
 }
 
 // Called to bind functionality to input
@@ -101,6 +100,15 @@ void AShooterPlayerBase::OnDeath()
 	GetCharacterMovement()->DisableMovement();
 	SetLifeSpan(5);
 	UE_LOG(LogHealth,Display, TEXT("Player IS Dead!"));
+	if (Controller)
+	{
+		Controller->ChangeState(NAME_Spectating);
+	}
+}
+
+void AShooterPlayerBase::OnHealthChange(float NawHealth)
+{
+	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),NawHealth)));
 }
 
 /*

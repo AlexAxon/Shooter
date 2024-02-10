@@ -60,6 +60,7 @@ private:
 	bool WantRunning = false;
 	bool IsMoveForward = false;
 	void OnDeath();
+	void OnHealthChange(float NawHealth);
 	
 	/*
 	void TurnTop(float Amount);

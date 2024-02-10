@@ -7,6 +7,7 @@
 #include "ShooterHealthComponent.generated.h"
 
 DECLARE_MULTICAST_DELEGATE(FOnDeath)
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnHealthChange,float)
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SHOOTER_API UShooterHealthComponent : public UActorComponent
 {
@@ -22,6 +23,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsDead(){return Health <= 0;}
 	FOnDeath OnDeath;
+	FOnHealthChange OnHealthChange;
 	
 private:
 	float Health = 0.0f;
