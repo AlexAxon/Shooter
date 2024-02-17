@@ -24,13 +24,31 @@ public:
 	bool IsDead(){return Health <= 0;}
 	FOnDeath OnDeath;
 	FOnHealthChange OnHealthChange;
+
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,Category="Health")
+	bool AutoHeal;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,Category="Health")
+	float HealUpdateTime;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,Category="Health")
+	float HealDelay;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,Category="Health")
+	float HealModifier;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,meta=(ClampMin = "0"),meta=(ClampMax = "500"))
+	float MaxHealth = 100.0f;
 	
 private:
 	float Health = 0.0f;
 
+	FTimerHandle RecoveryHealthTimerHandle ;
+	void UpdateHealth();
+	void SetHealth(float Health);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,meta=(ClampMin = "0"),meta=(ClampMax = "500"))
-	float MaxHealth = 100.0f;
 };

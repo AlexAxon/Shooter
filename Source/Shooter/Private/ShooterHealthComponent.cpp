@@ -20,9 +20,16 @@ void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, 
 	AController* InstigatedBy, AActor* DamageCauser)
 {
 	if (IsDead() || Damage <= 0) return;
-	Health = FMath::Clamp(Health - Damage,0,MaxHealth);
-	OnHealthChange.Broadcast(Health);
-	if (IsDead()) OnDeath.Broadcast();
+	SetHealth(Health - Damage);
+	if (IsDead())
+	{
+		GetWorld()->GetTimerManager().ClearTimer( RecoveryHealthTimerHandle);
+		OnDeath.Broadcast();
+	}
+	else if (AutoHeal)
+	{
+		GetWorld()->GetTimerManager().SetTimer(RecoveryHealthTimerHandle, this, &UShooterHealthComponent::UpdateHealth, HealUpdateTime, true, HealDelay);
+	}
 	if (DamageType)
 	{
 		if (DamageType->IsA<UIceDamageType>())
@@ -33,17 +40,31 @@ void UShooterHealthComponent::TakeAnyDamage(AActor* DamagedActor, float Damage, 
 		{
 			UE_LOG(LogHealth,Display, TEXT("HOT!"));
 		}
+		
 	}
 }
 
 
+void UShooterHealthComponent::UpdateHealth()
+{
+	SetHealth(Health + HealModifier);
+	if (Health == MaxHealth)
+	{
+		GetWorld()->GetTimerManager().ClearTimer( RecoveryHealthTimerHandle);
+	}
+}
+
+void UShooterHealthComponent::SetHealth(float NewHealth)
+{
+	Health = FMath::Clamp(NewHealth,0,MaxHealth);
+	OnHealthChange.Broadcast(Health);
+}
 
 // Called when the game starts
 void UShooterHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	Health = MaxHealth;
-	OnHealthChange.Broadcast(Health);
+	SetHealth(MaxHealth);
 	AActor*  Player = GetOwner();
 	// ...
 	Player->OnTakeAnyDamage.AddDynamic(this, &UShooterHealthComponent::TakeAnyDamage);
