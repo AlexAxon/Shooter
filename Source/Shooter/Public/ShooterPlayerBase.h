@@ -8,6 +8,7 @@
 
 class UShooterHealthComponent;
 class UTextRenderComponent;
+class AShooterWeaponBase;
 
 UCLASS()
 class SHOOTER_API AShooterPlayerBase : public ACharacter
@@ -30,8 +31,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UTextRenderComponent* TextRenderComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class TSubclassOf<AShooterWeaponBase> MyShooterWeaponClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AShooterWeaponBase> MyShooterWeaponClass;
 
 	
 

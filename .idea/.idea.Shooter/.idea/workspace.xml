@@ -11,13 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07c2e7ce-dcef-45d2-932a-b8937e9bac44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/HeroTPP/HeroTPP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/HeroTPP/HeroTPP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Project/Animations/BS_LocomotionRun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Animations/BS_LocomotionRun.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Project/Maps/TestMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Shooter.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Shooter.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +197,7 @@
       <workItem from="1708189759318" duration="3585000" />
       <workItem from="1708795058036" duration="747000" />
       <workItem from="1708795959143" duration="3027000" />
+      <workItem from="1708799237219" duration="363000" />
     </task>
     <servers />
   </component>
