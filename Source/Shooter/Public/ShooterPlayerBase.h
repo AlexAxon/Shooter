@@ -30,7 +30,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UTextRenderComponent* TextRenderComponent;
 
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class TSubclassOf<AShooterWeaponBase> MyShooterWeaponClass;
+
 	
 
 protected:
@@ -49,6 +51,8 @@ public:
 	bool IsRunning();
 	UFUNCTION(BlueprintCallable)
 	float GetMovementDirection();
+
+	
 	
 
 
@@ -61,6 +65,8 @@ private:
 	bool IsMoveForward = false;
 	void OnDeath();
 	void OnHealthChange(float NawHealth);
+	void SpawnWeapon();
+	
 	
 	/*
 	void TurnTop(float Amount);

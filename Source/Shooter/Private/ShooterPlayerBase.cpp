@@ -7,6 +7,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "GameFramework/Controller.h"
+#include "ShooterWeaponBase.h"
+
 #include "Engine/DamageEvents.h"
 
 
@@ -33,6 +35,7 @@ void AShooterPlayerBase::BeginPlay()
 	OnHealthChange(HealthComponent->GetHealth());
 	HealthComponent->OnDeath.AddUObject(this,&AShooterPlayerBase::OnDeath);
 	HealthComponent->OnHealthChange.AddUObject(this,&AShooterPlayerBase::OnHealthChange);
+	SpawnWeapon();
 }
 
 // Called every frame
@@ -109,6 +112,17 @@ void AShooterPlayerBase::OnDeath()
 void AShooterPlayerBase::OnHealthChange(float NawHealth)
 {
 	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),NawHealth)));
+}
+
+void AShooterPlayerBase::SpawnWeapon()
+{
+	auto Weapon =  GetWorld()->SpawnActor<AShooterWeaponBase>(MyShooterWeaponClass);
+	
+	if (Weapon)
+	{
+		FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget,false);
+		Weapon->AttachToComponent(GetMesh(),AttachmentRules,"WeaponPoint");
+	}
 }
 
 /*
