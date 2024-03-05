@@ -11,13 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07c2e7ce-dcef-45d2-932a-b8937e9bac44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/ShooterPlayerBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Private/Weapon/ShooterWeaponBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Private/Weapon/ShooterWeaponBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Public/ShooterPlayerBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/Public/Weapon/ShooterWeaponBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/Public/Weapon/ShooterWeaponBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Shooter/ShooterGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Shooter/ShooterGameModeBase.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,6 +199,7 @@
       <workItem from="1708795959143" duration="3027000" />
       <workItem from="1708799237219" duration="616000" />
       <workItem from="1709655014918" duration="4633000" />
+      <workItem from="1709659802787" duration="748000" />
     </task>
     <servers />
   </component>
