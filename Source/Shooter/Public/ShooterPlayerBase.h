@@ -31,10 +31,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UTextRenderComponent* TextRenderComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AShooterWeaponBase> MyShooterWeaponClass;
-
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UWaeponComponent* WeaponComponent;
 
 protected:
 	// Called when the game starts or when spawned
@@ -66,9 +64,7 @@ private:
 	bool IsMoveForward = false;
 	void OnDeath();
 	void OnHealthChange(float NawHealth);
-	void SpawnWeapon();
-	
-	
+
 	/*
 	void TurnTop(float Amount);
 	void TurnAround(float Amount);

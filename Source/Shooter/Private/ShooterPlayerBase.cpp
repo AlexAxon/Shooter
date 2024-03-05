@@ -8,6 +8,7 @@
 #include "Components/TextRenderComponent.h"
 #include "GameFramework/Controller.h"
 #include "ShooterWeaponBase.h"
+#include "WaeponComponent.h"
 
 #include "Engine/DamageEvents.h"
 
@@ -26,6 +27,7 @@ AShooterPlayerBase::AShooterPlayerBase(const FObjectInitializer& ObjectInit) : S
 	HealthComponent = CreateDefaultSubobject<UShooterHealthComponent>("ShooterHealthComponent");
 	TextRenderComponent = CreateDefaultSubobject<UTextRenderComponent>("TextRenderComponent");
 	TextRenderComponent->SetupAttachment(GetRootComponent());
+	WeaponComponent = CreateDefaultSubobject<UWaeponComponent>("WeaponComponent");
 }
 
 // Called when the game starts or when spawned
@@ -35,7 +37,6 @@ void AShooterPlayerBase::BeginPlay()
 	OnHealthChange(HealthComponent->GetHealth());
 	HealthComponent->OnDeath.AddUObject(this,&AShooterPlayerBase::OnDeath);
 	HealthComponent->OnHealthChange.AddUObject(this,&AShooterPlayerBase::OnHealthChange);
-	SpawnWeapon();
 }
 
 // Called every frame
@@ -54,8 +55,9 @@ void AShooterPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	PlayerInputComponent->BindAxis("TurnAround", this, &AShooterPlayerBase::AddControllerYawInput);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AShooterPlayerBase::Jump);
 	//ускорение бинд функцый
-	PlayerInputComponent->BindAction("Run" , IE_Pressed, this, &AShooterPlayerBase::StarRunning);
-	PlayerInputComponent->BindAction("Run" , IE_Released, this, &AShooterPlayerBase::StopRunning);
+	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &AShooterPlayerBase::StarRunning);
+	PlayerInputComponent->BindAction("Run", IE_Released, this, &AShooterPlayerBase::StopRunning);
+	PlayerInputComponent->BindAction("Fire",IE_Pressed,WeaponComponent,&UWaeponComponent::Fire);
 }
 
 bool AShooterPlayerBase::IsRunning()
@@ -114,16 +116,6 @@ void AShooterPlayerBase::OnHealthChange(float NawHealth)
 	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),NawHealth)));
 }
 
-void AShooterPlayerBase::SpawnWeapon()
-{
-	auto Weapon =  GetWorld()->SpawnActor<AShooterWeaponBase>(MyShooterWeaponClass);
-	
-	if (Weapon)
-	{
-		FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget,false);
-		Weapon->AttachToComponent(GetMesh(),AttachmentRules,"WeaponPoint");
-	}
-}
 
 /*
 	void AShooterPlayerBase::TurnTop(float Amount)
