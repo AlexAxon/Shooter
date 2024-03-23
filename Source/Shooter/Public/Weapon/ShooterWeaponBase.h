@@ -16,9 +16,14 @@ public:
 	AShooterWeaponBase();
 	void Fire();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float TraceMaxDistanse = 2000.0f;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	UPROPERTY(VisibleAnywhere,  BlueprintReadWrite)
 	class USkeletalMeshComponent* WeaponMesh;
+
+	void MakeShot();
 };
