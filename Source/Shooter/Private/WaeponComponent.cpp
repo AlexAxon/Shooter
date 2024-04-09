@@ -43,7 +43,8 @@ void UWaeponComponent::SpawnWeapon()
 		if (Character)
 		{
 			FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget,false);
-			 CurrentWeapon->AttachToComponent( (*Character).GetMesh(),AttachmentRules,"WeaponPoint");
+			CurrentWeapon->AttachToComponent( (*Character).GetMesh(),AttachmentRules,"WeaponPoint");
+			CurrentWeapon->SetOwner(GetOwner());
 		}
 	}
 }
