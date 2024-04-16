@@ -21,7 +21,7 @@ public:
 
 	FName MagSocket = "RifleMagSocket";
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float DamageAmount = 23.f;
 
 protected:

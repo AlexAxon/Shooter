@@ -9,8 +9,8 @@
 #include "GameFramework/Controller.h"
 #include "ShooterWeaponBase.h"
 #include "WaeponComponent.h"
-
 #include "Engine/DamageEvents.h"
+#include "Components/CapsuleComponent.h"
 
 
 DEFINE_LOG_CATEGORY_STATIC(LogHealth,All,All)
@@ -109,6 +109,7 @@ void AShooterPlayerBase::OnDeath()
 	{
 		Controller->ChangeState(NAME_Spectating);
 	}
+	GetCapsuleComponent()->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 }
 
 void AShooterPlayerBase::OnHealthChange(float NawHealth)
