@@ -16,10 +16,16 @@ UWaeponComponent::UWaeponComponent()
 	// ...
 }
 
-void UWaeponComponent::Fire()
+void UWaeponComponent::StartFire()
 {
 	if (!CurrentWeapon) return;
-	CurrentWeapon->Fire();
+	CurrentWeapon->StartFire();
+}
+
+void UWaeponComponent::StopFire()
+{
+	if (!CurrentWeapon) return;
+	CurrentWeapon->StopFire();
 }
 
 

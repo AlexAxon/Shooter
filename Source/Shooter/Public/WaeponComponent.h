@@ -21,7 +21,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AShooterWeaponBase> MyShooterWeaponClass;
 
-	void Fire();
+	void StartFire();
+
+	void StopFire();
 
 	
 	AShooterWeaponBase* CurrentWeapon;

@@ -18,10 +18,15 @@ AShooterWeaponBase::AShooterWeaponBase()
 
 }
 
-void AShooterWeaponBase::Fire()
+void AShooterWeaponBase::StartFire()
 {
-	UE_LOG(LogWeapon,Display,TEXT("Fire"));
 	MakeShot();
+	GetWorldTimerManager().SetTimer(ShotTimerHandle, this, &AShooterWeaponBase::MakeShot, TimebetweenShots, true);
+}
+
+void AShooterWeaponBase::StopFire()
+{
+	GetWorldTimerManager().ClearTimer(ShotTimerHandle);
 }
 
 // Called when the game starts or when spawned
@@ -44,6 +49,7 @@ void AShooterWeaponBase::MakeShot()
 	{
 		DrawDebugLine(GetWorld(), GetMagSocketLocation(), HitResult.ImpactPoint, FColor::Red, false, 3.0f, 0.0f, 3.0f);
 		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10.0f, 22, FColor::Blue, false, 5.0f);
+		MakeDamage(HitResult);
 	}
 	else
 	{
@@ -92,7 +98,8 @@ bool AShooterWeaponBase::GetTraceData(FVector& TraceStart, FVector& TraceEnd)
 	if (!GetPlayerViewPoint(ViewRotator, ViewLocation)) return false;
 	FVector SocketLocation = GetMagSocketLocation();
 	TraceStart = ViewLocation;
-	FVector ShootDirection = ViewRotator.Vector();
+	const auto HalfRadius = FMath::DegreesToRadians(BulletSpread);
+	FVector ShootDirection = FMath::VRandCone(ViewRotator.Vector(), HalfRadius);
 	TraceEnd = TraceStart + ShootDirection * TraceMaxDistanse;
 	return true;
 }

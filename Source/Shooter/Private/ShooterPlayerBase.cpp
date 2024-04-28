@@ -57,7 +57,8 @@ void AShooterPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	//ускорение бинд функцый
 	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &AShooterPlayerBase::StarRunning);
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &AShooterPlayerBase::StopRunning);
-	PlayerInputComponent->BindAction("Fire",IE_Pressed,WeaponComponent,&UWaeponComponent::Fire);
+	PlayerInputComponent->BindAction("Fire",IE_Pressed,WeaponComponent,&UWaeponComponent::StartFire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, WeaponComponent, &UWaeponComponent::StopFire);
 }
 
 bool AShooterPlayerBase::IsRunning()
@@ -116,7 +117,6 @@ void AShooterPlayerBase::OnHealthChange(float NawHealth)
 {
 	TextRenderComponent->SetText(FText::FromString(FString::Printf(TEXT("%.0f"),NawHealth)));
 }
-
 
 /*
 	void AShooterPlayerBase::TurnTop(float Amount)

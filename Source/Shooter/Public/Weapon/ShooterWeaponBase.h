@@ -13,8 +13,15 @@ class SHOOTER_API AShooterWeaponBase : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	float TimebetweenShots = 0.4;
+	 
 	AShooterWeaponBase();
-	void Fire();
+
+	virtual void StartFire();
+
+	virtual void StopFire();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float TraceMaxDistanse = 2000.0f;
@@ -24,12 +31,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float DamageAmount = 23.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BulletSpread = 1.5f;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	UPROPERTY(VisibleAnywhere,  BlueprintReadWrite)
 	class USkeletalMeshComponent* WeaponMesh;
 
+	FTimerHandle ShotTimerHandle;
+	
 	void MakeShot();
 
 	void MakeDamage(FHitResult& HitResult);
