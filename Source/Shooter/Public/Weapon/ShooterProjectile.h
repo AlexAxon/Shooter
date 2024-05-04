@@ -9,6 +9,7 @@
 
 
 class USphereComponent;
+class UProjectileMovementComponent;
 
 
 UCLASS()
@@ -23,9 +24,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SphereRadius = 5.0f;
 
+	void SetDirection(FVector VectorDirection);
+
+	FVector Direction;
+
 private:
 
 	USphereComponent* SphereComponent;
+
+	UProjectileMovementComponent* ProjectileMovementComponent;
 
 protected:
 	// Called when the game starts or when spawned

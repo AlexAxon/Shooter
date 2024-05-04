@@ -21,10 +21,11 @@ void AShooterLauncherWeapon::MakeShot()
 	FHitResult HitResult;
 	MakeHit(HitResult, TraceStart, TraceEnd);
 	FVector EndPoint = HitResult.bBlockingHit ? HitResult.ImpactPoint : TraceEnd;  
-	FVector Direction = (EndPoint - GetMagSocketLocation()).GetSafeNormal()
+	FVector Direction = (EndPoint - GetMagSocketLocation()).GetSafeNormal();
 
 	FTransform SpawnTransform = FTransform(FRotator::ZeroRotator, GetMagSocketLocation());
 	AShooterProjectile* Projectile = GetWorld()->SpawnActorDeferred<AShooterProjectile>(ShooterProjectile, SpawnTransform);
+	Projectile->SetDirection(Direction);
 	UGameplayStatics::FinishSpawningActor(Projectile, SpawnTransform);
 
 }
