@@ -12,6 +12,7 @@ class USphereComponent;
 class UProjectileMovementComponent;
 
 
+
 UCLASS()
 class SHOOTER_API AShooterProjectile : public AActor
 {
@@ -24,9 +25,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SphereRadius = 5.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DamageAmount = 75.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+
+	float DamageRadius = 200.0f;
+
 	void SetDirection(FVector VectorDirection);
 
 	FVector Direction;
+
+	void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 private:
 

@@ -16,11 +16,19 @@ AShooterProjectile::AShooterProjectile()
 	ProjectileMovementComponent->InitialSpeed = 2000.0f;
 	SetRootComponent(SphereComponent);
 	SphereComponent->InitSphereRadius(SphereRadius);
+	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	SphereComponent->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
 }
 
 void AShooterProjectile::SetDirection(FVector VectorDirection)
 {
 	Direction = VectorDirection;
+
+}
+
+void AShooterProjectile::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+
 }
 
 // Called when the game starts or when spawned
@@ -30,4 +38,6 @@ void AShooterProjectile::BeginPlay()
 
 	ProjectileMovementComponent->Velocity = Direction * ProjectileMovementComponent->InitialSpeed;
 	SetLifeSpan(5.0f);
+	SphereComponent->OnComponentHit.AddDynamic(this, &AShooterProjectile::OnProjectileHit);
 }
+
